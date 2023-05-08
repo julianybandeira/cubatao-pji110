@@ -1,14 +1,17 @@
 import { BrowserRouter } from 'react-router-dom';
 import MyRoutes from './routes';
 import NavBar from './components/NavBar/NavBar';
+import PiContextProvider from './context/PiContext';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <NavBar />
-        <MyRoutes />
-      </BrowserRouter>
+      <PiContextProvider>
+        <BrowserRouter>
+          <NavBar />
+          <MyRoutes />
+        </BrowserRouter>
+      </PiContextProvider>
     </div>
   );
 }
