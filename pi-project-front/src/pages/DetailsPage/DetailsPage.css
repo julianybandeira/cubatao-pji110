@@ -1,0 +1,10 @@
+.details{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.details button{
+    margin: 20px;
+}
