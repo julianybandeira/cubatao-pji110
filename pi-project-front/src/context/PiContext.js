@@ -3,16 +3,19 @@ import { createContext, useState } from 'react';
 export const PiContext = createContext();
 
 export default function PiContextProvider({ children }) {
-  const [instructionManualsList, setInstructionManualsList] = useState([]);
-  const [chosenManual, setChosenManual] = useState({});
+  const [titles, setTitles] = useState([]);
+  const [fileId, setFileId] = useState(null);
+  const [selectedTitle, setSelectedTitle] = useState('');
   const [members, setMembers] = useState([]);
   const [infoProject, setInfoProject] = useState([]);
 
   const state = {
-    instructionManualsList,
-    setInstructionManualsList,
-    chosenManual,
-    setChosenManual,
+    titles,
+    setTitles,
+    fileId,
+    setFileId,
+    selectedTitle,
+    setSelectedTitle,
     members,
     setMembers,
     infoProject,

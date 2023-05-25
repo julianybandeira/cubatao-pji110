@@ -1,67 +1,62 @@
+/* eslint-disable no-unused-vars */
+import axios from 'axios';
 import Search from '../../components/Search/Search';
 import { useContext, useEffect } from 'react';
 import { PiContext } from '../../context/PiContext';
 import './HomePage.css';
 
 export default function HomePage() {
-  const { setInstructionManualsList } = useContext(PiContext);
+  const { titles, setTitles } = useContext(PiContext);
 
+  //ESSE BLOCO ABAIXO NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
   const top10Films = [
     {
-      title: 'The Shawshank Redemption',
+      id: 1,
+      title: 'Controlador Programável',
       description: 'gfuhdj kjhkhdfh hsdjfkhewkj jsbdfjkek hdfkh',
-      file: 1994,
+      url: 1994,
     },
     {
-      title: 'The Godfather',
+      id: 2,
+      title: 'Servo drive Siemens 1fk2206',
       description: 'gfuhdj kjhkhdfh hsdjfkhewkj jsbdfjkek hdfkh',
-      file: 1972,
+      url: 1972,
     },
     {
-      title: 'The Godfather: Part II',
+      id: 3,
+      title: 'Controlador Programável II',
       description: 'gfuhdj kjhkhdfh hsdjfkhewkj jsbdfjkek hdfkh',
-      file: 1974,
+      url: 1974,
     },
     {
-      title: 'The Dark Knight',
+      id: 4,
+      title: 'Controlador Programável III',
       description: 'gfuhdj kjhkhdfh hsdjfkhewkj jsbdfjkek hdfkh',
-      file: 2008,
+      url: 2008,
     },
     {
-      title: '12 Angry Men',
+      id: 5,
+      title: 'Controlador Programável IV',
       description: 'gfuhdj kjhkhdfh hsdjfkhewkj jsbdfjkek hdfkh',
-      file: 1957,
+      url: 1957,
     },
-    {
-      title: "Schindler's List",
-      description: 'gfuhdj kjhkhdfh hsdjfkhewkj jsbdfjkek hdfkh',
-      file: 1993,
-    },
-    {
-      title: 'Pulp Fiction',
-      description: 'gfuhdj kjhkhdfh hsdjfkhewkj jsbdfjkek hdfkh',
-      file: 1994,
-    },
-    {
-      title: 'The Lord of the Rings: The Return of the King',
-      description: 'gfuhdj kjhkhdfh hsdjfkhewkj jsbdfjkek hdfkh',
-      file: 2003,
-    },
-    {
-      title: 'The Good',
-      description: 'gfuhdj kjhkhdfh hsdjfkhewkj jsbdfjkek hdfkh',
-      file: 1966,
-    },
-    {
-      title: 'Fight Club',
-      description: 'gfuhdj kjhkhdfh hsdjfkhewkj jsbdfjkek hdfkh',
-      file: 1999,
-    },
-  ];
+  ]; //ESSE BLOCO ACIMA NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
 
   useEffect(() => {
-    setInstructionManualsList(top10Films);
-  });
+    //ESSE BLOCO ABAIXO NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
+    setTitles(top10Films);
+    console.log(titles); //ESSE BLOCO ACIMA NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
+
+    /* 
+    axios.get('API_ENDPOINT') // SUBSTITUIR 'API_ENDPOINT' pela URL da API
+      .then(response => {
+        setTitles(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    */
+  }, []);
 
   return (
     <div className="home-page">

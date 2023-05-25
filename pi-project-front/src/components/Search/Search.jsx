@@ -1,53 +1,45 @@
-import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { PiContext } from '../../context/PiContext';
-import Stack from '@mui/material/Stack';
-import Autocomplete from '@mui/material/Autocomplete';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import './Search.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function Search() {
-  const { instructionManualsList } = useContext(PiContext);
-
   const navigate = useNavigate();
+  const { titles, selectedTitle, setSelectedTitle } = useContext(PiContext);
 
-  function search() {
-    navigate('/cadastro');
-  }
+  const handleTitleChange = (event) => {
+    setSelectedTitle(event.target.value);
+    console.log(selectedTitle);
+  };
+
+  const handleSearchClick = () => {
+    navigate(`/details/${selectedTitle}`);
+  };
 
   return (
     <div className="search">
-      <Stack spacing={2} sx={{ maxWidth: 600 }}>
-        <Autocomplete
-          freeSolo
-          id="free-solo-2-demo"
-          disableClearable
-          options={instructionManualsList.map((option) => option.title)}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="Pesquisar por"
-              InputProps={{
-                ...params.InputProps,
-                type: 'search',
-              }}
-            />
-          )}
-        />
-        <Button
-          onClick={search}
-          variant="contained"
-          style={{
-            backgroundColor: '#5D9817',
-            width: '300px',
-            alignSelf: 'center',
-          }}
-          size="large"
-        >
-          Pesquisar
-        </Button>
-      </Stack>
+      <h1>Selecione um Manual</h1>
+      <select value={selectedTitle} onChange={handleTitleChange}>
+        <option value="">Selecione...</option>
+        {titles.map((title) => (
+          <option key={title.id} value={title.id}>
+            {title.title}
+          </option>
+        ))}
+      </select>
+      <Button
+        onClick={handleSearchClick}
+        variant="contained"
+        style={{
+          backgroundColor: '#5D9817',
+          width: '300px',
+          alignSelf: 'center',
+        }}
+        size="large"
+      >
+        Pesquisar
+      </Button>
     </div>
   );
 }
