@@ -11,30 +11,30 @@ export default function DetailsPage() {
   const { titles } = useContext(PiContext);
   const [fileDetails, setFileDetails] = useState(null);
 
-  //ESSE BLOCO ABAIXO NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
+  /*ESSE BLOCO ABAIXO NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
   const arquivo = {
     id: 10,
     title: 'Controlador Programável',
     description: 'gfuhdj kjhkhdfh hsdjfkhewkj jsbdfjkek hdfkh',
     url: 'https://univesp.br/vestibular',
-  }; //ESSE BLOCO ACIMA NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
-
+  }; ESSE BLOCO ACIMA NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
+   */
   useEffect(() => {
     const fileId = id;
 
-    //ESSE BLOCO ABAIXO NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
+    /* //ESSE BLOCO ABAIXO NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
     console.log('Esse é o parametro' + fileId);
     setFileDetails(arquivo);
     console.log(arquivo); //ESSE BLOCO ACIMA NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
-    /*
+   */
     axios
-      .get(`API_ENDPOINT/${fileId}`) // SUBSTITUIR 'API_ENDPOINT' pela URL da API
+      .get(`http://localhost:8080/manual/${fileId}`) // SUBSTITUIR 'API_ENDPOINT' pela URL da API
       .then((response) => {
         setFileDetails(response.data);
       })
       .catch((error) => {
         console.error(error);
-      }); */
+      });
   }, [id]);
 
   const handleOnClick = () => {
