@@ -22,12 +22,12 @@ public class Manual {
 
     private String descricao;
 
-    private String link;
+    private String url;
 
     public Manual(ManualRequestDTO data){
       this.nome = data.nome();
       this.descricao = data.descricao();
-     this.link = data.link();
+     this.url = data.url();
     }
 
 }
