@@ -1,4 +1,5 @@
 import PhotoJuliany from './photos/juliany.jpg';
+import PhotoLeandro from './photos/Leandro.jpg';
 
 export const membersInfo = [
   {
@@ -33,7 +34,7 @@ export const membersInfo = [
   },
   {
     name: 'Leandro de Andrade',
-    photo: '',
+    photo: PhotoLeandro,
     email: '2102261@aluno.univesp.br',
   },
   {
