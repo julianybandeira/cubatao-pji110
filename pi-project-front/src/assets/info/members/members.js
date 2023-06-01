@@ -1,10 +1,15 @@
+import PhotoAllan from './photos/allan.jpg';
+import PhotoEduardo from './photos/eduardo.jpeg';
+import PhotoHemerson from './photos/hemerson.jpeg';
 import PhotoJuliany from './photos/juliany.jpg';
-import PhotoLeandro from './photos/Leandro.jpg';
+import PhotoLeandro from './photos/leandro.jpg';
+import PhotoMariana from './photos/mariana.jpeg';
+import PhotoMateus from './photos/jmateus.jpg';
 
 export const membersInfo = [
   {
     name: 'Allan Gois dos Santos',
-    photo: '',
+    photo: PhotoAllan,
     email: '2105845@aluno.univesp.b',
   },
   {
@@ -14,17 +19,17 @@ export const membersInfo = [
   },
   {
     name: 'Eduardo Sousa da Silva',
-    photo: '',
+    photo: PhotoEduardo,
     email: '2108998@aluno.univesp.br',
   },
   {
     name: 'Hemerson Coninck Pontes',
-    photo: '',
+    photo: PhotoHemerson,
     email: '2101366@aluno.univesp.br',
   },
   {
     name: 'Jose Mateus da Silva',
-    photo: '',
+    photo: PhotoMateus,
     email: '2108069@aluno.univesp.br',
   },
   {
@@ -39,7 +44,7 @@ export const membersInfo = [
   },
   {
     name: 'Mariana Vilas Boas Silva',
-    photo: '',
+    photo: PhotoMariana,
     email: '2108412@aluno.univesp.br',
   },
 ];
