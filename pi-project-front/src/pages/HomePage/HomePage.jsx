@@ -30,7 +30,7 @@ export default function HomePage() {
     },
     {
       id: 4,
-      title: 'Controlador Programável III',
+      title: 'Controlador Lógico Programável PLC300 V1.20',
       description: 'gfuhdj kjhkhdfh hsdjfkhewkj jsbdfjkek hdfkh',
       url: 2008,
     },
