@@ -27,15 +27,15 @@ export default function DetailsPage() {
     console.log('Esse é o parametro' + fileId);
     setFileDetails(arquivo);
     console.log(arquivo); //ESSE BLOCO ACIMA NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
-    /*
+   /*
     axios
-      .get(`API_ENDPOINT/${fileId}`) // SUBSTITUIR 'API_ENDPOINT' pela URL da API
+      .get(`http://localhost:8080/manual/${fileId}`) // SUBSTITUIR 'API_ENDPOINT' pela URL da API
       .then((response) => {
         setFileDetails(response.data);
       })
       .catch((error) => {
         console.error(error);
-      }); */
+      });*/
   }, [id]);
 
   const handleOnClick = () => {

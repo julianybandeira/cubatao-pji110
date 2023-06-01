@@ -26,7 +26,7 @@ export default function RegisterPage() {
 
   const updateTitles = () => {
     axios
-      .get('API_ENDPOINT') // SUBSTITUIR 'API_ENDPOINT' pela URL da API
+      .get('http://localhost:8080/manual/') // SUBSTITUIR 'API_ENDPOINT' pela URL da API
       .then((response) => {
         setTitles(response.data);
       })
@@ -35,6 +35,24 @@ export default function RegisterPage() {
       });
   };
 
+  /* const handleUploadClick = () => {
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('url', url);
+
+    axios
+      .post('http://localhost:8080/manual/', formData) // SUBSTITUIR 'API_ENDPOINT' pela URL da API
+      .then((response) => {
+        console.log(response.data); // Ver resposta da API, tratar, colocar msg?
+        setTitle('');
+        setDescription('');
+        setUrl('');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+*/
   const handleUploadClick = () => {
     const formData = new FormData();
     formData.append('title', title);
@@ -42,12 +60,14 @@ export default function RegisterPage() {
     formData.append('url', url);
 
     axios
-      .post('API_ENDPOINT/upload', formData) // SUBSTITUIR 'API_ENDPOINT' pela URL da API
+      .post('http://localhost:8080/manual/', formData)
       .then((response) => {
         console.log(response.data); // Ver resposta da API, tratar, colocar msg?
         setTitle('');
         setDescription('');
         setUrl('');
+
+        updateTitles(); // Atualiza os títulos após o envio do formulário
       })
       .catch((error) => {
         console.error(error);
