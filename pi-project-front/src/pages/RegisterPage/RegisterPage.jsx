@@ -3,15 +3,18 @@ import { Button } from '@mui/material';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RegisterPage.css';
-import axios from 'axios';
 import { PiContext } from '../../context/PiContext';
+import { useInsertDocument } from '../../hooks/useInsertDocument';
 
 export default function RegisterPage() {
-  const { setTitles } = useContext(PiContext);
+  const { setDocuments } = useContext(PiContext);
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [url, setUrl] = useState('');
+  const [formError, setFormError] = useState('');
+
+  const { insertDocument, response } = useInsertDocument('manuals');
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -24,62 +27,29 @@ export default function RegisterPage() {
     setUrl(event.target.value);
   };
 
-  const updateTitles = () => {
-    axios
-      .get('http://localhost:8080/manual/') // SUBSTITUIR 'API_ENDPOINT' pela URL da API
-      .then((response) => {
-        setTitles(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+  const handleUploadClick = (e) => {
+    e.preventDefault();
+    setFormError('');
 
-  /* const handleUploadClick = () => {
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('url', url);
+    if (!title || !description || !url) {
+      setFormError('Favor preencher todos os campos');
+    }
+    if (formError) return;
 
-    axios
-      .post('http://localhost:8080/manual/', formData) // SUBSTITUIR 'API_ENDPOINT' pela URL da API
-      .then((response) => {
-        console.log(response.data); // Ver resposta da API, tratar, colocar msg?
-        setTitle('');
-        setDescription('');
-        setUrl('');
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-*/
-  const handleUploadClick = () => {
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('url', url);
+    insertDocument({
+      title,
+      description,
+      url,
+    });
 
-    axios
-      .post('http://localhost:8080/manual/', formData)
-      .then((response) => {
-        console.log(response.data); // Ver resposta da API, tratar, colocar msg?
-        setTitle('');
-        setDescription('');
-        setUrl('');
-
-        updateTitles(); // Atualiza os títulos após o envio do formulário
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
-    updateTitles();
+    navigate('/');
   };
 
   return (
     <div className="register-page">
       <h1>Cadastro de Manual</h1>
       <input
+        name="title"
         type="text"
         placeholder="Título"
         value={title}
@@ -87,10 +57,12 @@ export default function RegisterPage() {
       />
       <textarea
         placeholder="Descrição"
+        name="description"
         value={description}
         onChange={handleDescriptionChange}
       />
       <input
+        name="url"
         type="text"
         placeholder="Insira aqui a URL do manual"
         value={url}
@@ -122,6 +94,7 @@ export default function RegisterPage() {
           Voltar
         </Button>
       </div>
+      {response.error && <p className="error">{response.error}</p>}
     </div>
   );
 }

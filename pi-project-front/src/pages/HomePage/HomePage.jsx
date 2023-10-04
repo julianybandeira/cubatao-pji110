@@ -4,9 +4,10 @@ import Search from '../../components/Search/Search';
 import { useContext, useEffect } from 'react';
 import { PiContext } from '../../context/PiContext';
 import './HomePage.css';
+import { useFetchDocuments } from '../../hooks/useFetchDocuments';
 
 export default function HomePage() {
-  const { titles, setTitles } = useContext(PiContext);
+  const { setTitles } = useContext(PiContext);
 
   //ESSE BLOCO ABAIXO NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
   const top10Films = [
@@ -44,8 +45,9 @@ export default function HomePage() {
 
   useEffect(() => {
     //ESSE BLOCO ABAIXO NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
+    //setDocuments(top10Films);
     setTitles(top10Films);
-    console.log(titles); //ESSE BLOCO ACIMA NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
+    //console.log(documents); //ESSE BLOCO ACIMA NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
 
     /* 
     axios.get('API_ENDPOINT') // SUBSTITUIR 'API_ENDPOINT' pela URL da API
